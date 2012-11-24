@@ -1,8 +1,5 @@
 require 'spec_helper'
 require 'tictactoe/board'
-require 'tictactoe'
-
-include Tictactoe::Marks
 
 describe Tictactoe::Board do
   let(:cut) {Tictactoe::Board}

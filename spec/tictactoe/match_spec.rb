@@ -2,9 +2,6 @@ require 'spec_helper'
 require 'tictactoe/match'
 require 'tictactoe/random_player'
 require 'tictactoe/board'
-require 'tictactoe'
-
-include Tictactoe::Marks
 
 describe Tictactoe::Match do
   let(:cut) {Tictactoe::Match}

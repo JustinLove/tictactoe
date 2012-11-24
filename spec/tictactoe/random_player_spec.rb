@@ -1,9 +1,6 @@
 require 'spec_helper'
 require 'tictactoe/random_player'
 require 'tictactoe/board'
-require 'tictactoe'
-
-include Tictactoe::Marks
 
 describe Tictactoe::RandomPlayer do
   let(:cut) {Tictactoe::RandomPlayer}
