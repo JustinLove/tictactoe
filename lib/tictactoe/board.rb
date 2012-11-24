@@ -35,6 +35,10 @@ module Tictactoe
       winning? || blank.count == 0
     end
 
+    def each_row(&block)
+      @field.each_slice(3, &block)
+    end
+
     private
 
     Lines = [

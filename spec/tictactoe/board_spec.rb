@@ -36,4 +36,13 @@ describe Tictactoe::Board do
     its(:winning?) {should be_false}
     its(:winner) {should == B}
   end
+
+  describe 'each_row' do
+    subject {
+      @rows = []
+      cut.new.each_row {|row| @rows << row}
+      @rows
+    }
+    it {should == [[B,B,B], [B,B,B], [B,B,B]]}
+  end
 end
