@@ -8,6 +8,9 @@ module Tictactoe
       board.move(@mark, select_move(board))
     end
 
+    def game_over(board)
+    end
+
     private
     def select_move(board)
       options = board.blank

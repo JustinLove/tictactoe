@@ -13,9 +13,8 @@ describe Tictactoe::TerminalPlayer do
   describe 'print board' do
     before do
       player.print_board(before)
-      output.rewind
     end
-    subject {output.read}
+    subject {output.rewind; output.read}
     it {should == <<BOARD}
 0|1|2
 -+-+-
@@ -57,5 +56,29 @@ BOARD
     subject {player.move(before)}
     its(:blank) {should have(8).items}
     its(:blank) {should_not include(1)}
+  end
+
+  describe 'game_over' do
+    subject {output.rewind; output.read}
+    describe 'tie' do
+      before do
+        player.game_over(before)
+      end
+      it {should match("Tie\n")}
+    end
+
+    describe 'win' do
+      before do
+        player.game_over(Tictactoe::Board.new([X,X,X, B,B,B, B,B,B]))
+      end
+      it {should match("You Win\n")}
+    end
+
+    describe 'lose' do
+      before do
+        player.game_over(Tictactoe::Board.new([O,O,O, B,B,B, B,B,B]))
+      end
+      it {should match("You Lose\n")}
+    end
   end
 end

@@ -27,12 +27,23 @@ module Tictactoe
       @output.puts rows.join("\n-+-+-\n")
     end
 
+    def game_over(board)
+      print_board(board)
+
+      @output.puts case board.winner
+      when B; 'Tie'
+      when @mark; 'You Win'
+      else ; 'You Lose'
+      end
+    end
+
     def get_input
-      @output.puts "Enter move # "
+      @output << "#{@mark} Enter move # "
       @input.gets.to_i
     end
 
     def get_move(board)
+      @output.puts
       print_board(board)
 
       blanks = board.blank

@@ -6,6 +6,7 @@ module Tictactoe
         players.push(player = players.shift)
         board = player.move board
       end
+      players.each {|player| player.game_over(board)}
       @board = board
     end
 
