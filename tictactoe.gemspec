@@ -28,4 +28,6 @@ MANIFEST
   gem.test_files    = <<TEST_MANIFEST
 TEST_MANIFEST
   gem.require_paths = ["lib"]
+
+  gem.add_development_dependency "guard-rspec"
 end
