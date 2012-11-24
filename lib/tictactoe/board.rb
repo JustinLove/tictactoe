@@ -31,6 +31,10 @@ module Tictactoe
       winner != B
     end
 
+    def finished?
+      winning? || blank.count == 0
+    end
+
     private
 
     Lines = [
