@@ -43,6 +43,10 @@ module Tictactoe
       @field.each_slice(3, &block)
     end
 
+    def to_s
+      "[#{@field.join(' ')}]"
+    end
+
     private
 
     Lines = [
