@@ -11,6 +11,10 @@ module Tictactoe
       board.next_moves(@mark).min_by {|n| minmax(opponent(@mark), n)}
     end
 
+    def game_over(board)
+    end
+
+    private
     def score(mark, board)
       case board.winner
       when mark; 1
@@ -27,10 +31,6 @@ module Tictactoe
       end
     end
 
-    def game_over(board)
-    end
-
-    private
     def opponent(mark)
       mark == X ? O : X
     end

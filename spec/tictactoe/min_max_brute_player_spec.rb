@@ -34,6 +34,9 @@ describe Tictactoe::MinMaxBrutePlayer do
   end
 
   describe 'score' do
+    class Tictactoe::MinMaxBrutePlayer
+      public :score
+    end
     subject {player}
     it {subject.score(X, Tictactoe::Board.new([B,B,B, B,B,B, B,B,B])).should == 0}
     it {subject.score(X, Tictactoe::Board.new([X,X,X, B,B,B, B,B,B])).should == 1}
@@ -42,6 +45,9 @@ describe Tictactoe::MinMaxBrutePlayer do
   end
 
   describe 'minmax' do
+    class Tictactoe::MinMaxBrutePlayer
+      public :minmax
+    end
     subject {player}
     it {subject.minmax(X, Tictactoe::Board.new([X,X,X, B,B,B, B,B,B])).should == 1}
     it {subject.minmax(X, Tictactoe::Board.new([O,O,O, B,B,B, B,B,B])).should == -1}
