@@ -29,7 +29,7 @@ module Tictactoe
       if board.finished?
         score(mark, board)
       else
-        -minmax(opponent(mark), board).last
+        -minmax(opponent(mark), board).last * future_discount
       end
     end
 
@@ -39,6 +39,10 @@ module Tictactoe
     private
     def opponent(mark)
       mark == X ? O : X
+    end
+
+    def future_discount
+      0.9
     end
   end
 end

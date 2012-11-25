@@ -14,18 +14,18 @@ describe Tictactoe::MinMaxBrutePlayer do
   end
 
   describe 'takes a win' do
-    let(:before) {Tictactoe::Board.new([X,B,O, X,B,O, B,B,B])}
+    let(:before) {Tictactoe::Board.new([X,B,B, X,B,B, B,B,B])}
     its(:winner) {should == X}
   end
 
   describe 'blocks a loss' do
-    let(:before) {Tictactoe::Board.new([O,B,X, B,O,B, B,B,B])}
+    let(:before) {Tictactoe::Board.new([O,B,B, B,O,B, B,B,B])}
     its(:blank) {should_not include(8)}
   end
 
   describe 'prefer a win to a block' do
-    let(:before) {Tictactoe::Board.new([O,O,B, X,X,B, O,B,B])}
-    its(:blank) {should_not include(5)}
+    let(:before) {Tictactoe::Board.new([O,O,B, B,B,B, X,X,B])}
+    its(:blank) {should_not include(8)}
   end
 
   describe 'not be stupid' do
@@ -47,7 +47,7 @@ describe Tictactoe::MinMaxBrutePlayer do
     it {subject.minmax(X, Tictactoe::Board.new([O,O,O, B,B,B, B,B,B])).last.should == -1}
     it {subject.minmax(X, Tictactoe::Board.new([X,X,B, B,B,B, B,B,B])).last.should == 1}
     it {subject.minmax(O, Tictactoe::Board.new([X,B,B, B,B,B, B,B,B])).last.should == 0}
-    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,B,B, B,B,O])).last.should == 1}
+    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,B,B, B,B,O])).last.should > 0}
     it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,O,B, B,B,B])).last.should == 0}
   end
 
