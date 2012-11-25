@@ -6,3 +6,9 @@ An unbeatable tic tac toe application. This has some basic requirements:
 -The AI should be unbeatable, and it should take the winning move whenever possible.
 
 There are no requirements around the interface or the language - it's your choice.
+
+## Usage
+
+- Packaged as a gem, so it could be installed; run `tictactoe`
+- `RUBYLIB=./lib bin/tictactoe`
+- `rake play`
