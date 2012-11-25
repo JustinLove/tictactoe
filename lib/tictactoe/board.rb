@@ -47,6 +47,17 @@ module Tictactoe
       "[#{@field.join(' ')}]"
     end
 
+    def hash
+      @field.hash
+    end
+
+    def eql?(other)
+      @field == other.field
+    end
+
+    protected
+    attr_reader :field
+
     private
 
     Lines = [

@@ -48,4 +48,16 @@ describe Tictactoe::Board do
     }
     it {should == [[B,B,B], [B,B,B], [B,B,B]]}
   end
+
+  describe 'hashable' do
+    let(:a) {cut.new}
+    let(:b) {cut.new}
+    it {a.hash.should == b.hash}
+    it {a.should eql(b)}
+    it do
+      x = {}
+      x[a] = true
+      x[b].should be_true
+    end
+  end
 end
