@@ -12,6 +12,10 @@ module Tictactoe
       blanks
     end
 
+    def next_moves(mark)
+      blank.map {|s| move(mark, s)}
+    end
+
     def move(who, index)
       f = @field.dup
       f[index] = who

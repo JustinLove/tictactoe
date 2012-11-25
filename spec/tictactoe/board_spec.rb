@@ -11,6 +11,7 @@ describe Tictactoe::Board do
     its(:finished?) {should be_false}
     its(:winning?) {should be_false}
     its(:winner) {should == B}
+    it {subject.next_moves(X).should have(9).items}
   end
 
   describe 'after a move' do
@@ -20,6 +21,7 @@ describe Tictactoe::Board do
     its(:finished?) {should be_false}
     its(:winning?) {should be_false}
     its(:winner) {should == B}
+    it {subject.next_moves(X).should have(8).items}
   end
 
   describe 'winning board' do
@@ -35,6 +37,7 @@ describe Tictactoe::Board do
     its(:finished?) {should be_true}
     its(:winning?) {should be_false}
     its(:winner) {should == B}
+    it {subject.next_moves(X).should have(0).items}
   end
 
   describe 'each_row' do
