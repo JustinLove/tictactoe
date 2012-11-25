@@ -8,7 +8,7 @@ module Tictactoe
 
     def move(board)
       return board.move(@mark, 0) if board.blank.length == 9 # short circuit worst case
-      board.next_moves(@mark).max_by {|n| item_score(@mark, n)}
+      board.next_moves(@mark).min_by {|n| minmax(opponent(@mark), n)}
     end
 
     def score(mark, board)
@@ -20,16 +20,10 @@ module Tictactoe
     end
 
     def minmax(mark, board)
-      board.next_moves(mark).map {|n|
-        item_score(mark, n)
-      }.max
-    end
-
-    def item_score(mark, board)
       if board.finished?
         score(mark, board)
       else
-        -minmax(opponent(mark), board) * future_discount
+        board.next_moves(mark).map {|n| -minmax(opponent(mark), n)}.max * future_discount
       end
     end
 
