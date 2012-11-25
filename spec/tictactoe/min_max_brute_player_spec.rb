@@ -43,12 +43,12 @@ describe Tictactoe::MinMaxBrutePlayer do
 
   describe 'minmax' do
     subject {player}
-    it {subject.minmax(X, Tictactoe::Board.new([X,X,X, B,B,B, B,B,B])).last.should == 1}
-    it {subject.minmax(X, Tictactoe::Board.new([O,O,O, B,B,B, B,B,B])).last.should == -1}
-    it {subject.minmax(X, Tictactoe::Board.new([X,X,B, B,B,B, B,B,B])).last.should == 1}
-    it {subject.minmax(O, Tictactoe::Board.new([X,B,B, B,B,B, B,B,B])).last.should == 0}
-    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,B,B, B,B,O])).last.should > 0}
-    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,O,B, B,B,B])).last.should == 0}
+    it {subject.minmax(X, Tictactoe::Board.new([X,X,X, B,B,B, B,B,B])).should == 1}
+    it {subject.minmax(X, Tictactoe::Board.new([O,O,O, B,B,B, B,B,B])).should == -1}
+    it {subject.minmax(X, Tictactoe::Board.new([X,X,B, B,B,B, B,B,B])).should == 1}
+    it {subject.minmax(O, Tictactoe::Board.new([X,B,B, B,B,B, B,B,B])).should == 0}
+    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,B,B, B,B,O])).should > 0}
+    it {subject.minmax(X, Tictactoe::Board.new([X,B,B, B,O,B, B,B,B])).should == 0}
   end
 
   describe 'case studies' do
