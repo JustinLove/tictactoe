@@ -1,13 +1,8 @@
 module Tictactoe
-  class TerminalPlayer
-    def initialize(mark, input = STDIN, output = STDOUT)
-      @mark = mark
+  class Terminal
+    def initialize(input, output)
       @input = input
       @output = output
-    end
-
-    def move(board)
-      board.move(@mark, get_move(board))
     end
 
     def print_board(board)
@@ -27,27 +22,55 @@ module Tictactoe
       @output.puts rows.join("\n-+-+-\n")
     end
 
-    def game_over(board)
-      print_board(board)
+    def get_input(mark)
+      @output << "#{mark} Enter move # "
+      @input.gets.to_i
+    end
 
-      @output.puts case board.winner
+    def announce_winner(winner, mark)
+      @output.puts case winner
       when B; 'Tie'
-      when @mark; 'You Win'
+      when mark; 'You Win'
       else ; 'You Lose'
       end
     end
 
+    def print_blank_line
+      @output.puts
+    end
+  end
+
+  class TerminalPlayer
+    def initialize(mark, input = STDIN, output = STDOUT)
+      @mark = mark
+      @input = input
+      @output = output
+      @terminal = Terminal.new(input, output)
+    end
+
+    def move(board)
+      board.move(@mark, get_move(board))
+    end
+
+    def game_over(board)
+      @terminal.print_board(board)
+      @terminal.announce_winner(board.winner, @mark)
+    end
+
+    def print_board(board)
+      @terminal.print_board(board)
+    end
+
     def get_input
-      @output << "#{@mark} Enter move # "
-      @input.gets.to_i
+      @terminal.get_input(@mark)
     end
 
     def get_move(board)
-      @output.puts
-      print_board(board)
+      @terminal.print_blank_line
+      @terminal.print_board(board)
 
       blanks = board.blank
-      n = get_input until blanks.include?(n)
+      n = @terminal.get_input(@mark) until blanks.include?(n)
       n
     end
   end

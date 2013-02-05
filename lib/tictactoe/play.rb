@@ -5,6 +5,6 @@ require 'tictactoe/min_max_memo_player'
 
 module Tictactoe
   def self.play!
-    Match.new Board.new, [TerminalPlayer.new(X), MinMaxMemoPlayer.new(O)]
+    Match.new(Board.new, [TerminalPlayer.new(X), MinMaxMemoPlayer.new(O)]).play!
   end
 end

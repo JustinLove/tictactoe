@@ -9,7 +9,9 @@ describe Tictactoe::Match do
   let(:o) {Tictactoe::RandomPlayer.new(O)}
 
   def play_match
-    cut.new(Tictactoe::Board.new, [x, o])
+    match = cut.new(Tictactoe::Board.new, [x, o])
+    match.play!
+    match
   end
 
   let(:match) {play_match}
